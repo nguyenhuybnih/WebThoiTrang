@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebThoiTrang.Models.Menu>
+
+@{
+    ViewData["Title"] = "QLy Menu";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="table-responsive">
+    <table class="table">
+        <div class="row m-b-30">
+           
+            <div class="col-lg-4 text-left">
+                <button class="btn btn-primary">
+                    <i class="anticon anticon-plus-circle m-r-5"></i>
+                    <a href="/admin/adminmenus/create" style="color: white;">Add</a>
+
+                </button>
+            </div>
+        </div>
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Title</th>
+                <th scope="col">Des</th>
+                <th scope="col">Levels</th>
+                <th scope="col">ParentId</th>
+                <th scope="col">Position</th>
+                <th scope="col">Active</th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+                @{
+                    int i = 1;
+                }
+                @foreach (var item in Model)
+                {
+                <tr id="tr_@item.MenuId">
+                    <td>@(i++)</td>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.Levels</td>
+                    <td>@item.ParentId</td>
+                    <td>@item.Position</td>
+
+                    <td>
+                    @if (item.IsActive)
+                    {
+                        <div class="d-flex align-items-center">
+                            <div class="badge badge-success badge-dot m-r-10"></div>
+                            <div>Active</div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex align-items-center">
+                            <div class="badge badge-success badge-dot m-r-10"></div>
+                            <div>inactive</div>
+                        </div>
+                    }
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MenuId" class="btn btn-primary btn-sm">Edit</a>|
+                        <a asp-action="Details" asp-route-id="@item.MenuId" class="btn btn-info btn-sm">Details</a>| 
+                        <a asp-action="Delete" asp-route-id="@item.MenuId" class="btn btn-danger btn-sm btn-delete">Delete</a>
+                    </td>
+                </tr>
+                }
+
+        </tbody>
+    </table>
+</div>

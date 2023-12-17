@@ -1,0 +1,103 @@
+﻿@model IEnumerable<WebThoiTrang.Models.Account>
+
+@{
+    ViewData["Title"] = "Danh sách tài khoản quản trị";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h2 class="header-title">List Accounts</h2>
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a href="/admin" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            @*<a class="breadcrumb-item" href="/admin/accounts"></a>
+            <a class="breadcrumb-item" href="#">E-commerce</a>*@
+            <span class="breadcrumb-item active">List </span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row m-b-30">
+           
+            <div class="col-lg-4 text-left">
+                <button class="btn btn-primary">
+                    <i class="anticon anticon-plus-circle m-r-5"></i>
+                    <a href="/admin/accounts/create" style="color: white;">Add</a>
+
+                </button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover e-commerce-table">
+                <thead>
+                    <tr>
+                       
+                        <th>STT</th>
+                        <th>UserName</th>
+                        <th>Pass</th>
+                        <th>PHone</th>
+                        <th>Email </th>
+                        <th>Role</th>
+                        <th>Active</th>
+
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 1;
+                    }
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr id="tr_@item.AccountId">
+
+                                <td>
+                                    @(i++)
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img class="img-fluid rounded" src="~/adassets/images/others/thumb-9.jpg" style="max-width: 60px" alt="">
+                                        <h6 class="m-b-0 m-l-10">@item.Username</h6>
+                                    </div>
+                                </td>
+                                <td>@item.Password</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Email</td>
+                                <td>@item.Role.Description</td>
+
+                                <td>
+                                    @if (item.IsActive)
+                                    {
+                                        <div class="d-flex align-items-center">
+                                            <div class="badge badge-success badge-dot m-r-10"></div>
+                                            <div>Active</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="d-flex align-items-center">
+                                            <div class="badge badge-success badge-dot m-r-10"></div>
+                                            <div>inactive</div>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.AccountId" class="btn btn-primary btn-sm">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.AccountId" class="btn btn-info btn-sm">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.AccountId" class="btn btn-danger btn-sm btn-delete">Delete</a>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+
+                 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
