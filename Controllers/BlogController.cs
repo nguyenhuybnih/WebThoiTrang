@@ -17,7 +17,7 @@ namespace WebThoiTrang.Controllers
 		{	
 			
 			var pageNumber = page == null || page <= 0 ? 1 : page.Value;
-			var pageSize = 1;
+			var pageSize = 4;
 			var lsBlog = _context.Blogs.AsNoTracking().OrderByDescending(x => x.BlogId);
 			PagedList<Blog> models = new PagedList<Blog>(lsBlog, pageNumber, pageSize);
 

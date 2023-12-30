@@ -1,0 +1,10 @@
+﻿@model IList<ProductCategory>
+
+@foreach (var item in Model)
+{
+<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" asp-controller="Home" asp-action="Sphamtheoloai"
+asp-route-itemid="@item.Title">
+		@item.Title
+</button>
+}
+					
