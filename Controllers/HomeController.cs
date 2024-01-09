@@ -29,16 +29,17 @@ namespace WebThoiTrang.Controllers
 			ViewBag.CurrentPage = pageNumber;
 			return View(models);
         }
-		public IActionResult Sphamtheoloai(int id,int? page)
+
+		/*public IActionResult Sphamtheoloai(int cateid ,int? page)
 		{
 			var pageNumber = page == null || page <= 0 ? 1 : page.Value;
 			var pageSize = 5;
-			var lsPro = _context.Products.AsNoTracking().Where(x=>x.CategoryProductId==id).OrderByDescending(x => x.ProductId);
+			var lsPro = _context.Products.AsNoTracking().Where(x=>x.CategoryProductId==cateid).OrderByDescending(x => x.ProductId);
 			PagedList<Product> sp = new PagedList<Product>(lsPro, pageNumber, pageSize);
 
 			ViewBag.CurrentPage = pageNumber;
 			return View(sp);
-		}
+		}*/
 
 
 		public IActionResult Privacy()

@@ -16,7 +16,7 @@ namespace WebThoiTrang.Controllers
 		public IActionResult Index(int? page)
 		{
 			var pageNumber = page == null || page <= 0 ? 1 : page.Value;
-			var pageSize = 5;
+			var pageSize = 8;
 			var lsPro = _context.Products.AsNoTracking().OrderByDescending(x => x.ProductId);
 			PagedList<Product> models = new PagedList<Product>(lsPro, pageNumber, pageSize);
 
