@@ -19,19 +19,7 @@ namespace WebThoiTrang.Controllers
 			notyfService = notyfService;
 		}
 
-		public List<CartItem> GioHang
-		{
-			get
-			{
-				var cartItems = HttpContext.Session.Get<List<CartItem>>("Giohang");
-				var gh = cartItems;
-				if (gh == null)
-				{
-					return new List<CartItem>();
-				}
-				return gh;
-			}
-		}
+		
 		
 
 		public IActionResult Index()
